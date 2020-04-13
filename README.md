@@ -17,3 +17,11 @@ I fetched the Data from NovelCOVID API, get it here https://documenter.getpostma
 
 - A visualization of how the pandemic has spread accross the world nicely dispayed on the map with a detailed information of the countries when a marker of a specific country is tapped.
 
+# NOTE
+If you intend to clone the source code and play around with it, 
+
+- Navigate to ./android/app/src/main/AndroidManifest.xml
+- Look for this line <meta-data android:name="com.google.android.geo.API_KEY" android:value="@string/key"/>
+- Replace "@string/key" with your API Key activated with google map
+- The app will not run without that piece.
+
