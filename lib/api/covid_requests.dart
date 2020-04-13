@@ -8,7 +8,43 @@ import 'dart:async';
 class CovidRequest with ChangeNotifier {
 
   StreamController _mapViewCountryController;
+  StreamController _covidGlobalController;
   StreamController _historyController;
+
+
+/////////////////////////////////////////COVID GLOBAL DATA/////////////////////////////////////
+
+
+  // StreamController get covidGlobalStream {
+  //   _covidGlobalController = new StreamController();
+  //   loadCovidData();
+  //   return _covidGlobalController;
+  // }
+
+  // Future getCovidGlobalData() async {
+  //   var url = 'https://corona.lmao.ninja/all';
+  //   try {
+  //     final response = await http.get(url);
+  //     if (response.statusCode != 200) {
+  //       print('Request failed with status: ${response.statusCode}.');
+  //     } else {
+  //       notifyListeners();
+  //       return json.decode(response.body);
+  //     }
+  //   } catch (e) {
+
+  //     print("AN EXCEPTION OCCURED ${e}");
+  //   }
+  // }
+
+  // loadCovidGlobalData() async {
+  //   getCovidGlobalData().then((res) async {
+  //     _covidGlobalController.add(res);
+  //     return res;
+  //   });
+  // }
+
+
 
 
   Future<Map> get covidAll async {
@@ -32,7 +68,6 @@ class CovidRequest with ChangeNotifier {
 
 
   ///GET COUNTRIES DATA FOR MAP VIEW
-
   StreamController get covidCountryStream {
     _mapViewCountryController = new StreamController();
     loadCovidData();

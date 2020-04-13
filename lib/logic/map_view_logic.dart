@@ -27,7 +27,7 @@ class MapViewLogic with ChangeNotifier {
     _covidStreamList = snapshot;
   }
 
-///SET MAP CUSTOM MARKER (VIRUS ICON)
+  ///SET MAP CUSTOM MARKER (VIRUS ICON)
   Future<Uint8List> getBytesFromAsset(String path, int width) async {
     ByteData data = await rootBundle.load(path);
     ui.Codec codec = await ui.instantiateImageCodec(data.buffer.asUint8List(),
@@ -73,13 +73,10 @@ class MapViewLogic with ChangeNotifier {
     }
   }
 
-
-
-
   void changeMapCameraPosition(value) {
     print("null value");
     if (value == null) {
-      throw(value);
+      throw (value);
     } else {
       Geolocator()
           .placemarkFromAddress(value)
@@ -103,8 +100,7 @@ class MapViewLogic with ChangeNotifier {
     }
   }
 
-
-  MapViewLogic(){
-     markerIcon();
+  MapViewLogic() {
+    markerIcon();
   }
 }
