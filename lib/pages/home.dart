@@ -4,6 +4,7 @@ import 'package:covidapp/pages/map_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class HomePage extends StatefulWidget {
@@ -33,7 +34,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromRGBO(164, 52, 68, 1),
-        title: Text("Covid Brief"),
+        title: Text("Covid Satellite",style: GoogleFonts.chakraPetch(),),
         actions: <Widget>[
           IconButton(
             tooltip: "Map View",

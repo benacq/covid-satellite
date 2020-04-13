@@ -21,22 +21,18 @@ dependencies:
     sdk: flutter
   # web_socket_channel: ^1.1.0
   http: ^0.12.0+4
-  json_serializable: ^3.3.0
+  # json_serializable: ^3.3.0
   provider: ^4.0.4
   fluttertoast: ^4.0.1
   font_awesome_flutter: ^8.5.0
   intl: ^0.16.1
   flutter_spinkit: "^4.1.2"
-  google_maps_webservice: ^0.0.16
-  flutter_google_places: ^0.2.4
   flutter_typeahead: ^1.8.0
   google_maps_flutter: ^0.5.25+3
   charts_flutter: ^0.9.0
+  google_fonts: ^0.4.0
   geolocator: ^5.3.1
-  geolocation: ^1.1.2
   geocoder: ^0.2.1
-  flutter_dotenv: ^2.1.0
-  search_map_place: ^0.1.1
 
   # font_awesome_flutter: ^8.8.1
   # The following adds the Cupertino Icons font to your application.

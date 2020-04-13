@@ -3,10 +3,8 @@ import 'package:covidapp/pages/home.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'api/covid_requests.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 Future<void> main() {
-  // await DotEnv().load('.env');
   runApp(
     MultiProvider(
        providers: [
