@@ -23,7 +23,7 @@ Get the app here https://benacq.github.io/covidapp/
 If you intend to clone the source code and play around with it, 
 
 - Navigate to ./android/app/src/main/AndroidManifest.xml
-- Look for this line <meta-data android:name="com.google.android.geo.API_KEY" android:value="@string/key"/>
+- Look for this line ```<meta-data android:name="com.google.android.geo.API_KEY" android:value="@string/key"/>```
 - Replace "@string/key" with your API Key activated with google map
 - The app will not run without that piece.
 
