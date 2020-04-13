@@ -11,8 +11,6 @@ I fetched the Data from NovelCOVID API, get it here https://documenter.getpostma
 
 # FEATURES
 
-keytool -importkeystore -srckeystore c:/ANDROID_TOOLS/signing_cert_covidapp/key.jks -destkeystore c:/ANDROID_TOOLS/signing_cert_covidapp/key.jks -deststoretype pkcs12
-
 - Displays the total number of cases, deaths, recoveries and other detailed information globally
 
 - Displays total number of cases, deaths, recoveries and other detailed information for a country of your choice, you h ave an option to choose whatever country you want
