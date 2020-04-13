@@ -57,8 +57,8 @@ class MapViewLogic with ChangeNotifier {
               markerId: MarkerId(dataList[i]['country'].toString()),
               position: LatLng(dataList[i]['countryInfo']['lat'].toDouble(),
                   dataList[i]['countryInfo']['long'].toDouble()),
-              // icon: BitmapDescriptor.fromBytes(_customMarker),
-              icon: BitmapDescriptor.defaultMarker,
+              icon: BitmapDescriptor.fromBytes(_customMarker),
+              // icon: BitmapDescriptor.defaultMarker,
               infoWindow: InfoWindow(title: dataList[i]['country'].toString()),
               onTap: () {
                 _index = i.toInt();
