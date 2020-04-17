@@ -170,7 +170,7 @@ class _CovidMainPageState extends State<CovidMainPage> {
                     ),
 ////////////////////////////////////////////////////
 ///////////////////////////////////////////////////
-                    (width > 400)
+                    (width < 400)
                         ? Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
