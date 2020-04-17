@@ -25,10 +25,13 @@ class _CovidMainPageState extends State<CovidMainPage> {
   @override
   Widget build(BuildContext context) {
     CovidRequest covidGlobal = Provider.of<CovidRequest>(context);
+    double width = MediaQuery.of(context).size.width;
     // print(covidGlobal.covidAll);
 
     return SafeArea(
+      maintainBottomViewPadding: true,
       child: Container(
+        
         child: StreamBuilder(
             stream: covidGlobal.covidAll.asStream(),
             builder: (BuildContext context, AsyncSnapshot snapshot) {
@@ -165,334 +168,701 @@ class _CovidMainPageState extends State<CovidMainPage> {
                         ),
                       ),
                     ),
-                    Container(
-                        margin: EdgeInsets.only(left: 20, right: 20),
-                        child: Flex(
-                          // crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          direction: Axis.horizontal,
-                          children: <Widget>[
-                            Expanded(
-                              child: Card(
-                                shadowColor: Colors.white,
-                                elevation: 10,
-                                child: Container(
-                                  height: 100,
-                                  // color: Colors.white,
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: <Widget>[
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: <Widget>[
-                                          Icon(
-                                            FontAwesomeIcons.heartbeat,
-                                            color: Color.fromRGBO(
-                                                255, 127, 127, 1),
-                                            size: 20,
-                                          ),
-                                          SizedBox(width: 8),
-                                          Text(
-                                            "Deaths",
-                                            style: TextStyle(
-                                                // fontWeight: FontWeight.w600,
-                                                fontSize: 18,
-                                                color: Color.fromRGBO(
-                                                    255, 127, 127, 1)),
-                                          ),
-                                        ],
-                                      ),
-                                      SizedBox(
-                                        height: 5,
-                                      ),
-                                      Center(
-                                        child: Text(
-                                          f.format(snapshot.data['deaths']),
-                                          style: TextStyle(
-                                              color: Color.fromRGBO(
-                                                  255, 127, 127, 1),
-                                              fontSize: 30),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Expanded(
-                              child: Card(
-                                elevation: 10,
-                                shadowColor: Colors.white,
-                                child: Container(
-                                  // padding: EdgeInsets.all(10),
-                                  height: 100,
-                                  color: Colors.white,
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: <Widget>[
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: <Widget>[
-                                          Icon(
-                                            FontAwesomeIcons.virusSlash,
-                                            color:
-                                                Color.fromRGBO(60, 214, 152, 1),
-                                            size: 20,
-                                          ),
-                                          SizedBox(width: 8),
-                                          Text(
-                                            "Recoveries",
-                                            style: TextStyle(
-                                                // fontWeight: FontWeight.w600,
-                                                fontSize: 18,
-                                                color: Color.fromRGBO(
-                                                    60, 214, 152, 1)),
-                                          ),
-                                        ],
-                                      ),
-                                      SizedBox(
-                                        height: 5,
-                                      ),
-                                      Center(
-                                        child: Text(
-                                          f.format(snapshot.data['recovered']),
-                                          style: TextStyle(
+////////////////////////////////////////////////////
+///////////////////////////////////////////////////
+                    (width > 400)
+                        ? Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Container(
+                                margin: EdgeInsets.symmetric(
+                                    vertical: 0, horizontal: 20),
+                                child: Card(
+                                  elevation: 8,
+                                  shadowColor: Colors.white,
+                                  child: Container(
+                                    // padding: EdgeInsets.all(10),
+                                    height: 100,
+                                    color: Colors.white,
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: <Widget>[
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: <Widget>[
+                                            Icon(
+                                              FontAwesomeIcons.virusSlash,
                                               color: Color.fromRGBO(
                                                   60, 214, 152, 1),
-                                              fontSize: 30),
+                                              size: 20,
+                                            ),
+                                            SizedBox(width: 8),
+                                            Text(
+                                              "Recoveries",
+                                              style: TextStyle(
+                                                  // fontWeight: FontWeight.w600,
+                                                  fontSize: 18,
+                                                  color: Color.fromRGBO(
+                                                      60, 214, 152, 1)),
+                                            ),
+                                          ],
                                         ),
-                                      ),
-                                    ],
+                                        SizedBox(
+                                          height: 5,
+                                        ),
+                                        Center(
+                                          child: Text(
+                                            f.format(
+                                                snapshot.data['recovered']),
+                                            style: TextStyle(
+                                                color: Color.fromRGBO(
+                                                    60, 214, 152, 1),
+                                                fontSize: 30),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                          ],
-                        )),
-                    SizedBox(
-                      height: 20,
-                    ),
-
-                    Container(
-                        margin: EdgeInsets.only(left: 20, right: 20),
-                        child: Flex(
-                          // crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          direction: Axis.horizontal,
-                          children: <Widget>[
-                            Expanded(
-                              child: Card(
-                                elevation: 10,
-                                shadowColor: Colors.white,
-                                child: Container(
-                                  padding: EdgeInsets.all(10),
-                                  height: 100,
-                                  color: Colors.white,
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: <Widget>[
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: <Widget>[
-                                          Icon(
-                                            FontAwesomeIcons.firstAid,
-                                            color:
-                                                Color.fromRGBO(90, 141, 255, 1),
-                                            size: 20,
-                                          ),
-                                          SizedBox(width: 8),
-                                          Text(
-                                            "Active",
-                                            style: TextStyle(
-                                                // fontWeight: FontWeight.w600,
-                                                fontSize: 18,
-                                                color: Color.fromRGBO(
-                                                    90, 141, 255, 1)),
-                                          ),
-                                        ],
-                                      ),
-                                      SizedBox(
-                                        height: 5,
-                                      ),
-                                      Center(
-                                        child: Text(
-                                          f.format(snapshot.data['active']),
-                                          style: TextStyle(
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Container(
+                                margin: EdgeInsets.symmetric(
+                                    vertical: 2, horizontal: 20),
+                                child: Card(
+                                  elevation: 8,
+                                  shadowColor: Colors.white,
+                                  child: Container(
+                                    padding: EdgeInsets.all(10),
+                                    height: 100,
+                                    color: Colors.white,
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: <Widget>[
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: <Widget>[
+                                            Icon(
+                                              FontAwesomeIcons.firstAid,
                                               color: Color.fromRGBO(
                                                   90, 141, 255, 1),
-                                              fontSize: 30),
+                                              size: 20,
+                                            ),
+                                            SizedBox(width: 8),
+                                            Text(
+                                              "Active",
+                                              style: TextStyle(
+                                                  // fontWeight: FontWeight.w600,
+                                                  fontSize: 18,
+                                                  color: Color.fromRGBO(
+                                                      90, 141, 255, 1)),
+                                            ),
+                                          ],
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Expanded(
-                              child: Card(
-                                elevation: 10,
-                                shadowColor: Colors.white,
-                                child: Container(
-                                  padding: EdgeInsets.all(10),
-                                  height: 100,
-                                  color: Colors.white,
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: <Widget>[
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: <Widget>[
-                                          Icon(
-                                            FontAwesomeIcons.ambulance,
-                                            color:
-                                                Color.fromRGBO(138, 21, 56, 1),
-                                            size: 18,
-                                          ),
-                                          SizedBox(width: 8),
-                                          Text(
-                                            "Critical",
+                                        SizedBox(
+                                          height: 5,
+                                        ),
+                                        Center(
+                                          child: Text(
+                                            f.format(snapshot.data['active']),
                                             style: TextStyle(
-                                                // fontWeight: FontWeight.w600,
-                                                fontSize: 18,
                                                 color: Color.fromRGBO(
-                                                    138, 21, 56, 1)),
+                                                    90, 141, 255, 1),
+                                                fontSize: 30),
                                           ),
-                                        ],
-                                      ),
-                                      SizedBox(
-                                        height: 5,
-                                      ),
-                                      Center(
-                                        child: Text(
-                                          f.format(snapshot.data['critical']),
-                                          style: TextStyle(
-                                              color: Color.fromRGBO(
-                                                  138, 21, 56, 1),
-                                              fontSize: 30),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                          ],
-                        )),
-
-                    //THIRD FLEX
-                    SizedBox(
-                      height: 20,
-                    ),
-
-                    Container(
-                        margin: EdgeInsets.only(left: 20, right: 20),
-                        child: Flex(
-                          // crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          direction: Axis.horizontal,
-                          children: <Widget>[
-                            Expanded(
-                              child: Card(
-                                elevation: 10,
-                                shadowColor: Colors.white,
-                                child: Container(
-                                  padding: EdgeInsets.all(10),
-                                  height: 100,
-                                  color: Colors.white,
-                                  child: Column(
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Container(
+                                  margin: EdgeInsets.only(left: 20, right: 20),
+                                  child: Flex(
+                                    // crossAxisAlignment: CrossAxisAlignment.center,
                                     mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                    direction: Axis.horizontal,
                                     children: <Widget>[
-                                      Center(
-                                        child: Text(
-                                          f.format(
-                                              snapshot.data['todayDeaths']),
-                                          style: TextStyle(
-                                              color: Color.fromRGBO(
-                                                  255, 127, 127, 1),
-                                              fontSize: 30),
+                                      Expanded(
+                                        child: Card(
+                                          shadowColor: Colors.white,
+                                          elevation: 8,
+                                          child: Container(
+                                            height: 100,
+                                            // color: Colors.white,
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: <Widget>[
+                                                Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: <Widget>[
+                                                    Icon(
+                                                      FontAwesomeIcons
+                                                          .heartbeat,
+                                                      color: Color.fromRGBO(
+                                                          255, 127, 127, 1),
+                                                      size: 20,
+                                                    ),
+                                                    SizedBox(width: 8),
+                                                    Text(
+                                                      "Deaths",
+                                                      style: TextStyle(
+                                                          // fontWeight: FontWeight.w600,
+                                                          fontSize: 18,
+                                                          color: Color.fromRGBO(
+                                                              255,
+                                                              127,
+                                                              127,
+                                                              1)),
+                                                    ),
+                                                  ],
+                                                ),
+                                                SizedBox(
+                                                  height: 5,
+                                                ),
+                                                Center(
+                                                  child: Text(
+                                                    f.format(snapshot
+                                                        .data['deaths']),
+                                                    style: TextStyle(
+                                                        color: Color.fromRGBO(
+                                                            255, 127, 127, 1),
+                                                        fontSize: 30),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
                                         ),
                                       ),
                                       SizedBox(
-                                        height: 5,
+                                        width: 10,
                                       ),
-                                      Center(
-                                        child: Text(
-                                          "Deaths Today",
-                                          style: TextStyle(
-                                              color: Color.fromRGBO(
-                                                  255, 127, 127, 1),
-                                              fontSize: 18),
+                                      Expanded(
+                                        child: Card(
+                                          elevation: 8,
+                                          shadowColor: Colors.white,
+                                          child: Container(
+                                            padding: EdgeInsets.all(10),
+                                            height: 100,
+                                            color: Colors.white,
+                                            child: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: <Widget>[
+                                                Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: <Widget>[
+                                                    Icon(
+                                                      FontAwesomeIcons
+                                                          .ambulance,
+                                                      color: Color.fromRGBO(
+                                                          138, 21, 56, 1),
+                                                      size: 18,
+                                                    ),
+                                                    SizedBox(width: 8),
+                                                    Text(
+                                                      "Critical",
+                                                      style: TextStyle(
+                                                          // fontWeight: FontWeight.w600,
+                                                          fontSize: 18,
+                                                          color: Color.fromRGBO(
+                                                              138, 21, 56, 1)),
+                                                    ),
+                                                  ],
+                                                ),
+                                                SizedBox(
+                                                  height: 5,
+                                                ),
+                                                Center(
+                                                  child: Text(
+                                                    f.format(snapshot
+                                                        .data['critical']),
+                                                    style: TextStyle(
+                                                        color: Color.fromRGBO(
+                                                            138, 21, 56, 1),
+                                                        fontSize: 30),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
                                         ),
                                       ),
                                     ],
-                                  ),
-                                ),
+                                  )),
+                              SizedBox(
+                                height: 10,
                               ),
-                            ),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Expanded(
-                              child: Card(
-                                elevation: 10,
-                                shadowColor: Colors.white,
-                                child: Container(
-                                  padding: EdgeInsets.all(10),
-                                  height: 100,
-                                  color: Colors.white,
-                                  child: Column(
+                              Container(
+                                  margin: EdgeInsets.only(left: 20, right: 20),
+                                  child: Flex(
+                                    // crossAxisAlignment: CrossAxisAlignment.center,
                                     mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                    direction: Axis.horizontal,
                                     children: <Widget>[
-                                      Center(
-                                        child: Text(
-                                          f.format(snapshot.data['todayCases']),
-                                          style: TextStyle(
-                                              color: Color.fromRGBO(
-                                                  237, 139, 0, 1),
-                                              fontSize: 30),
+                                      Expanded(
+                                        child: Card(
+                                          elevation: 8,
+                                          shadowColor: Colors.white,
+                                          child: Container(
+                                            padding: EdgeInsets.all(10),
+                                            height: 100,
+                                            color: Colors.white,
+                                            child: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: <Widget>[
+                                                Center(
+                                                  child: Text(
+                                                    f.format(snapshot
+                                                        .data['todayDeaths']),
+                                                    style: TextStyle(
+                                                        color: Color.fromRGBO(
+                                                            255, 127, 127, 1),
+                                                        fontSize: 30),
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  height: 5,
+                                                ),
+                                                Center(
+                                                  child: Text(
+                                                    "Deaths Today",
+                                                    style: TextStyle(
+                                                        color: Color.fromRGBO(
+                                                            255, 127, 127, 1),
+                                                        fontSize: 18),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
                                         ),
                                       ),
                                       SizedBox(
-                                        height: 5,
+                                        width: 10,
                                       ),
-                                      Center(
-                                        child: Text(
-                                          "Cases Today",
-                                          style: TextStyle(
-                                              color: Color.fromRGBO(
-                                                  237, 139, 0, 1),
-                                              fontSize: 18),
+                                      Expanded(
+                                        child: Card(
+                                          elevation: 8,
+                                          shadowColor: Colors.white,
+                                          child: Container(
+                                            padding: EdgeInsets.all(10),
+                                            height: 100,
+                                            color: Colors.white,
+                                            child: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: <Widget>[
+                                                Center(
+                                                  child: Text(
+                                                    f.format(snapshot
+                                                        .data['todayCases']),
+                                                    style: TextStyle(
+                                                        color: Color.fromRGBO(
+                                                            237, 139, 0, 1),
+                                                        fontSize: 30),
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  height: 5,
+                                                ),
+                                                Center(
+                                                  child: Text(
+                                                    "Cases Today",
+                                                    style: TextStyle(
+                                                        color: Color.fromRGBO(
+                                                            237, 139, 0, 1),
+                                                        fontSize: 18),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
                                         ),
                                       ),
                                     ],
-                                  ),
-                                ),
+                                  )),
+                            ],
+                          )
+                        :
+/////////////////////////////////////////////////
+/////////////////////////////////////////////////
+                        Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Container(
+                                  margin: EdgeInsets.only(left: 20, right: 20),
+                                  child: Flex(
+                                    // crossAxisAlignment: CrossAxisAlignment.center,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    direction: Axis.horizontal,
+                                    children: <Widget>[
+                                      Expanded(
+                                        child: Card(
+                                          shadowColor: Colors.white,
+                                          elevation: 8,
+                                          child: Container(
+                                            height: 100,
+                                            // color: Colors.white,
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: <Widget>[
+                                                Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: <Widget>[
+                                                    Icon(
+                                                      FontAwesomeIcons
+                                                          .heartbeat,
+                                                      color: Color.fromRGBO(
+                                                          255, 127, 127, 1),
+                                                      size: 20,
+                                                    ),
+                                                    SizedBox(width: 8),
+                                                    Text(
+                                                      "Deaths",
+                                                      style: TextStyle(
+                                                          // fontWeight: FontWeight.w600,
+                                                          fontSize: 18,
+                                                          color: Color.fromRGBO(
+                                                              255,
+                                                              127,
+                                                              127,
+                                                              1)),
+                                                    ),
+                                                  ],
+                                                ),
+                                                SizedBox(
+                                                  height: 5,
+                                                ),
+                                                Center(
+                                                  child: Text(
+                                                    f.format(snapshot
+                                                        .data['deaths']),
+                                                    style: TextStyle(
+                                                        color: Color.fromRGBO(
+                                                            255, 127, 127, 1),
+                                                        fontSize: 30),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      Expanded(
+                                        child: Card(
+                                          elevation: 8,
+                                          shadowColor: Colors.white,
+                                          child: Container(
+                                            // padding: EdgeInsets.all(10),
+                                            height: 100,
+                                            color: Colors.white,
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: <Widget>[
+                                                Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: <Widget>[
+                                                    Icon(
+                                                      FontAwesomeIcons
+                                                          .virusSlash,
+                                                      color: Color.fromRGBO(
+                                                          60, 214, 152, 1),
+                                                      size: 20,
+                                                    ),
+                                                    SizedBox(width: 8),
+                                                    Text(
+                                                      "Recoveries",
+                                                      style: TextStyle(
+                                                          // fontWeight: FontWeight.w600,
+                                                          fontSize: 18,
+                                                          color: Color.fromRGBO(
+                                                              60, 214, 152, 1)),
+                                                    ),
+                                                  ],
+                                                ),
+                                                SizedBox(
+                                                  height: 5,
+                                                ),
+                                                Center(
+                                                  child: Text(
+                                                    f.format(snapshot
+                                                        .data['recovered']),
+                                                    style: TextStyle(
+                                                        color: Color.fromRGBO(
+                                                            60, 214, 152, 1),
+                                                        fontSize: 30),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  )),
+                              SizedBox(
+                                height: 20,
                               ),
-                            ),
-                          ],
-                        )),
+
+                              Container(
+                                  margin: EdgeInsets.only(left: 20, right: 20),
+                                  child: Flex(
+                                    // crossAxisAlignment: CrossAxisAlignment.center,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    direction: Axis.horizontal,
+                                    children: <Widget>[
+                                      Expanded(
+                                        child: Card(
+                                          elevation: 8,
+                                          shadowColor: Colors.white,
+                                          child: Container(
+                                            padding: EdgeInsets.all(10),
+                                            height: 100,
+                                            color: Colors.white,
+                                            child: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: <Widget>[
+                                                Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: <Widget>[
+                                                    Icon(
+                                                      FontAwesomeIcons.firstAid,
+                                                      color: Color.fromRGBO(
+                                                          90, 141, 255, 1),
+                                                      size: 20,
+                                                    ),
+                                                    SizedBox(width: 8),
+                                                    Text(
+                                                      "Active",
+                                                      style: TextStyle(
+                                                          // fontWeight: FontWeight.w600,
+                                                          fontSize: 18,
+                                                          color: Color.fromRGBO(
+                                                              90, 141, 255, 1)),
+                                                    ),
+                                                  ],
+                                                ),
+                                                SizedBox(
+                                                  height: 5,
+                                                ),
+                                                Center(
+                                                  child: Text(
+                                                    f.format(snapshot
+                                                        .data['active']),
+                                                    style: TextStyle(
+                                                        color: Color.fromRGBO(
+                                                            90, 141, 255, 1),
+                                                        fontSize: 30),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      Expanded(
+                                        child: Card(
+                                          elevation: 8,
+                                          shadowColor: Colors.white,
+                                          child: Container(
+                                            padding: EdgeInsets.all(10),
+                                            height: 100,
+                                            color: Colors.white,
+                                            child: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: <Widget>[
+                                                Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: <Widget>[
+                                                    Icon(
+                                                      FontAwesomeIcons
+                                                          .ambulance,
+                                                      color: Color.fromRGBO(
+                                                          138, 21, 56, 1),
+                                                      size: 18,
+                                                    ),
+                                                    SizedBox(width: 8),
+                                                    Text(
+                                                      "Critical",
+                                                      style: TextStyle(
+                                                          // fontWeight: FontWeight.w600,
+                                                          fontSize: 18,
+                                                          color: Color.fromRGBO(
+                                                              138, 21, 56, 1)),
+                                                    ),
+                                                  ],
+                                                ),
+                                                SizedBox(
+                                                  height: 5,
+                                                ),
+                                                Center(
+                                                  child: Text(
+                                                    f.format(snapshot
+                                                        .data['critical']),
+                                                    style: TextStyle(
+                                                        color: Color.fromRGBO(
+                                                            138, 21, 56, 1),
+                                                        fontSize: 30),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  )),
+
+                              //THIRD FLEX
+                              SizedBox(
+                                height: 20,
+                              ),
+
+                              Container(
+                                  margin: EdgeInsets.only(left: 20, right: 20),
+                                  child: Flex(
+                                    // crossAxisAlignment: CrossAxisAlignment.center,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    direction: Axis.horizontal,
+                                    children: <Widget>[
+                                      Expanded(
+                                        child: Card(
+                                          elevation: 8,
+                                          shadowColor: Colors.white,
+                                          child: Container(
+                                            padding: EdgeInsets.all(10),
+                                            height: 100,
+                                            color: Colors.white,
+                                            child: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: <Widget>[
+                                                Center(
+                                                  child: Text(
+                                                    f.format(snapshot
+                                                        .data['todayDeaths']),
+                                                    style: TextStyle(
+                                                        color: Color.fromRGBO(
+                                                            255, 127, 127, 1),
+                                                        fontSize: 30),
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  height: 5,
+                                                ),
+                                                Center(
+                                                  child: Text(
+                                                    "Deaths Today",
+                                                    style: TextStyle(
+                                                        color: Color.fromRGBO(
+                                                            255, 127, 127, 1),
+                                                        fontSize: 18),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      Expanded(
+                                        child: Card(
+                                          elevation: 8,
+                                          shadowColor: Colors.white,
+                                          child: Container(
+                                            padding: EdgeInsets.all(10),
+                                            height: 100,
+                                            color: Colors.white,
+                                            child: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: <Widget>[
+                                                Center(
+                                                  child: Text(
+                                                    f.format(snapshot
+                                                        .data['todayCases']),
+                                                    style: TextStyle(
+                                                        color: Color.fromRGBO(
+                                                            237, 139, 0, 1),
+                                                        fontSize: 30),
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  height: 5,
+                                                ),
+                                                Center(
+                                                  child: Text(
+                                                    "Cases Today",
+                                                    style: TextStyle(
+                                                        color: Color.fromRGBO(
+                                                            237, 139, 0, 1),
+                                                        fontSize: 18),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  )),
+                            ],
+                          )
                   ],
                 );
               }

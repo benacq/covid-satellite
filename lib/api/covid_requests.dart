@@ -8,7 +8,7 @@ import 'dart:async';
 class CovidRequest with ChangeNotifier {
 
   StreamController _mapViewCountryController;
-  StreamController _covidGlobalController;
+  // StreamController _covidGlobalController;
   StreamController _historyController;
 
 
@@ -48,7 +48,7 @@ class CovidRequest with ChangeNotifier {
 
 
   Future<Map> get covidAll async {
-    var url = 'https://corona.lmao.ninja/all';
+    var url = 'https://corona.lmao.ninja/v2/all';
     Map<dynamic, dynamic> jsonData;
 
     try {
@@ -75,7 +75,7 @@ class CovidRequest with ChangeNotifier {
   }
 
   Future getCovidCountriesData() async {
-    var url = 'https://corona.lmao.ninja/countries';
+    var url = 'https://corona.lmao.ninja/v2/countries';
     try {
       final response = await http.get(url);
       if (response.statusCode != 200) {
