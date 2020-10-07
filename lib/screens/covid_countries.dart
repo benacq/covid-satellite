@@ -1,6 +1,5 @@
 import 'dart:async';
-
-import 'package:covidapp/model/countries_data_model.dart';
+import 'package:covidapp/models/countries_data_model.dart';
 import 'package:covidapp/services/fetch_covid_data.dart';
 import 'package:covidapp/widgets/covid_country_data_cols.dart';
 import 'package:flutter/material.dart';

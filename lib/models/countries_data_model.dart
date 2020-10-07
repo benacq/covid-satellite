@@ -44,11 +44,6 @@ class CovidCountriesModel {
   });
 
   factory CovidCountriesModel.fromJson(Map<String, dynamic> json) {
-    // json.forEach((key, value) {
-
-    // });
-    // print(json['country']);
-
     return CovidCountriesModel(
       continent: json['continent'],
       country: json['country'],

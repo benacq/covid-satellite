@@ -1,4 +1,4 @@
-import 'package:covidapp/model/global_data_model.dart';
+import 'package:covidapp/models/global_data_model.dart';
 import 'package:covidapp/services/fetch_covid_data.dart';
 import 'package:covidapp/widgets/global_case_card.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +7,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 
 class CovidGlobal extends StatelessWidget {
-  NumberFormat f = new NumberFormat();
+  final NumberFormat f = new NumberFormat();
 
   String parseTime(int timestamp) {
     DateTime date =

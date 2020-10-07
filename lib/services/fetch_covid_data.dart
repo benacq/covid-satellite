@@ -1,5 +1,5 @@
-import 'package:covidapp/model/countries_data_model.dart';
-import 'package:covidapp/model/global_data_model.dart';
+import 'package:covidapp/models/countries_data_model.dart';
+import 'package:covidapp/models/global_data_model.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;

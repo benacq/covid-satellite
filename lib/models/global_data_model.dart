@@ -39,10 +39,6 @@ class CovidGlobalModel {
       this.affectedCountries});
 
   factory CovidGlobalModel.fromJson(Map<String, dynamic> json) {
-    // json.forEach((key, value) {
-    //   print("$key : $value");
-    // });
-
     return CovidGlobalModel(
       updated: json['updated'],
       cases: json['cases'],

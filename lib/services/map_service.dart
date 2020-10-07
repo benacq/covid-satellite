@@ -1,15 +1,15 @@
 import 'dart:async';
 import 'dart:typed_data';
 import 'dart:ui' as ui;
+import 'package:covidapp/models/countries_data_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geolocator/geolocator.dart';
 
-class MapViewLogic with ChangeNotifier {
-  
+class MapEngine with ChangeNotifier {
   Completer<GoogleMapController> _mapController = Completer();
-  List _covidStreamList;
+  // List _covidStreamList;
   Uint8List _customMarker;
   int _index;
   bool _mapMarkerInfo = false;
@@ -24,11 +24,10 @@ class MapViewLogic with ChangeNotifier {
   }
 
 //PASS LIST TO THIS CLASS
-  set setSnapShot(List snapshot) {
-    _covidStreamList = snapshot;
-  }
+  // set setSnapShot(List snapshot) {
+  //   _covidStreamList = snapshot;
+  // }
 
-  ///SET MAP CUSTOM MARKER (VIRUS ICON)
   Future<Uint8List> getBytesFromAsset(String path, int width) async {
     ByteData data = await rootBundle.load(path);
     ui.Codec codec = await ui.instantiateImageCodec(data.buffer.asUint8List(),
@@ -46,21 +45,22 @@ class MapViewLogic with ChangeNotifier {
     _customMarker = markerIcon;
   }
 
-//CREATES THE MARKER
-  Set<Marker> get markerGenerator {
-    if (_covidStreamList != null) {
-      List dataList = _covidStreamList;
+  // ignore: missing_return
+  Set<Marker> markerGenerator(
+      List<CovidCountriesModel> countriesDataModelList) {
+    if (countriesDataModelList != null) {
       final Set<Marker> _markers = {};
       Marker countryMarker;
       if (_customMarker != null) {
-        for (int i = 0; i < dataList.length; i++) {
+        for (int i = 0; i < countriesDataModelList.length; i++) {
           countryMarker = Marker(
-              markerId: MarkerId(dataList[i]['country'].toString()),
-              position: LatLng(dataList[i]['countryInfo']['lat'].toDouble(),
-                  dataList[i]['countryInfo']['long'].toDouble()),
+              markerId: MarkerId(countriesDataModelList[i].country.toString()),
+              position: LatLng(countriesDataModelList[i].lat.toDouble(),
+                  countriesDataModelList[i].long.toDouble()),
               icon: BitmapDescriptor.fromBytes(_customMarker),
               // icon: BitmapDescriptor.defaultMarker,
-              infoWindow: InfoWindow(title: dataList[i]['country'].toString()),
+              infoWindow: InfoWindow(
+                  title: countriesDataModelList[i].country.toString()),
               onTap: () {
                 _index = i.toInt();
                 _mapMarkerInfo = true;
@@ -75,7 +75,6 @@ class MapViewLogic with ChangeNotifier {
   }
 
   void changeMapCameraPosition(value) {
-    print("null value");
     if (value == null) {
       throw (value);
     } else {
@@ -101,7 +100,7 @@ class MapViewLogic with ChangeNotifier {
     }
   }
 
-  MapViewLogic() {
+  MapEngine() {
     markerIcon();
   }
 }

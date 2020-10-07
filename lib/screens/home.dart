@@ -1,10 +1,13 @@
+import 'package:covidapp/screens/map_view.dart';
 import 'package:covidapp/screens/covid_countries.dart';
 import 'package:covidapp/screens/covid_global.dart';
+import 'package:covidapp/services/map_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -42,7 +45,13 @@ class _HomePageState extends State<HomePage> {
             icon: Icon(FontAwesomeIcons.map),
             color: Colors.white,
             onPressed: () {
-              print("Map view...");
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => ChangeNotifierProvider<MapEngine>(
+                        create: (context) => new MapEngine(),
+                        child: CovidMapView())),
+              );
             },
           )
         ],
