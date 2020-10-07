@@ -7,6 +7,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geolocator/geolocator.dart';
 
 class MapViewLogic with ChangeNotifier {
+  
   Completer<GoogleMapController> _mapController = Completer();
   List _covidStreamList;
   Uint8List _customMarker;

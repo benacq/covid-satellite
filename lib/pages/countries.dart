@@ -23,13 +23,11 @@ class _CovidCountryViewState extends State<CovidCountryView> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
   }
 
   @override
   void dispose() {
-    // TODO: implement dispose
     timer?.cancel();
     timer = null;
     super.dispose();
@@ -105,6 +103,7 @@ class _CovidCountryViewState extends State<CovidCountryView> {
                         ),
                       ),
                     ),
+
                     _flexThreeCols(
                         _infectedCountries,
                         selectedCountryIndex,
@@ -259,6 +258,7 @@ class _CovidCountryViewState extends State<CovidCountryView> {
       children: <Widget>[
         Expanded(
           child: Container(
+            // color: Colors.green,
             padding: EdgeInsets.all(10),
             height: 70,
             // color: Color.fromRGBO(237, 139, 0, 1),

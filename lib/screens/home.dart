@@ -1,12 +1,10 @@
-import 'package:covidapp/pages/countries.dart';
-import 'package:covidapp/pages/covid_main.dart';
-import 'package:covidapp/pages/map_view.dart';
 import 'package:covidapp/screens/covid_countries.dart';
+import 'package:covidapp/screens/covid_global.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -25,7 +23,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     _pageController.dispose();
     super.dispose();
   }
@@ -45,9 +42,7 @@ class _HomePageState extends State<HomePage> {
             icon: Icon(FontAwesomeIcons.map),
             color: Colors.white,
             onPressed: () {
-              // Navigator.pushNamed(context, '/map_view');
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => CovidMapView()));
+              print("Map view...");
             },
           )
         ],
@@ -66,10 +61,8 @@ class _HomePageState extends State<HomePage> {
                 },
                 controller: _pageController,
                 children: <Widget>[
-                  CovidMainPage(),
-                  // CovidCountries(),
-                  CovidCountryView(),
-                  // CovidMapView()
+                  CovidGlobal(),
+                  CovidCountries(),
                 ],
               ),
             ],
@@ -89,10 +82,6 @@ class _HomePageState extends State<HomePage> {
             icon: Icon(Icons.flag),
             title: Text('Countries'),
           ),
-          // BottomNavigationBarItem(
-          //   icon: Icon(Icons.map),
-          //   title: Text('Map View'),
-          // ),
         ],
         onTap: (index) {
           setState(() {
@@ -106,7 +95,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   DateTime currentBackPressTime;
-  Future<bool> onWillPop() {
+  Future<bool> onWillPop() async {
     DateTime now = DateTime.now();
     if (currentBackPressTime == null ||
         now.difference(currentBackPressTime) > Duration(seconds: 2)) {
@@ -115,5 +104,6 @@ class _HomePageState extends State<HomePage> {
       return Future.value(false);
     }
     SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+    return true;
   }
 }

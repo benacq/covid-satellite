@@ -14,39 +14,6 @@ class CovidRequest with ChangeNotifier {
 
 /////////////////////////////////////////COVID GLOBAL DATA/////////////////////////////////////
 
-
-  // StreamController get covidGlobalStream {
-  //   _covidGlobalController = new StreamController();
-  //   loadCovidData();
-  //   return _covidGlobalController;
-  // }
-
-  // Future getCovidGlobalData() async {
-  //   var url = 'https://corona.lmao.ninja/all';
-  //   try {
-  //     final response = await http.get(url);
-  //     if (response.statusCode != 200) {
-  //       print('Request failed with status: ${response.statusCode}.');
-  //     } else {
-  //       notifyListeners();
-  //       return json.decode(response.body);
-  //     }
-  //   } catch (e) {
-
-  //     print("AN EXCEPTION OCCURED ${e}");
-  //   }
-  // }
-
-  // loadCovidGlobalData() async {
-  //   getCovidGlobalData().then((res) async {
-  //     _covidGlobalController.add(res);
-  //     return res;
-  //   });
-  // }
-
-
-
-
   Future<Map> get covidAll async {
     var url = 'https://corona.lmao.ninja/v2/all';
     Map<dynamic, dynamic> jsonData;

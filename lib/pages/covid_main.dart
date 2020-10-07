@@ -31,7 +31,6 @@ class _CovidMainPageState extends State<CovidMainPage> {
     return SafeArea(
       maintainBottomViewPadding: true,
       child: Container(
-        
         child: StreamBuilder(
             stream: covidGlobal.covidAll.asStream(),
             builder: (BuildContext context, AsyncSnapshot snapshot) {
@@ -48,6 +47,8 @@ class _CovidMainPageState extends State<CovidMainPage> {
               } else {
                 return ListView(
                   children: <Widget>[
+//------------------------------------------         ------------------------------------------//
+
                     Container(
                       height: 200,
                       margin: EdgeInsets.only(
