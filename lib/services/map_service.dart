@@ -9,17 +9,17 @@ import 'package:geolocator/geolocator.dart';
 
 class MapEngine with ChangeNotifier {
   Completer<GoogleMapController> _mapController = Completer();
-  // List _covidStreamList;
   Uint8List _customMarker;
-  int _index;
-  bool _mapMarkerInfo = false;
+  int _indexTapped;
+  bool _isMarkerCardShowing = false;
 
-  get mapMarkerInfo => _mapMarkerInfo;
-  get index => _index;
+  get isMarkerCardShowing => _isMarkerCardShowing;
+  get indexTapped => _indexTapped;
   get mapController => _mapController;
 
-  set disableMarkerInfo(bool disable) {
-    _mapMarkerInfo = disable;
+  set hideDetailCard(bool disable) {
+    _isMarkerCardShowing = disable;
+    print(_isMarkerCardShowing);
     notifyListeners();
   }
 
@@ -62,8 +62,9 @@ class MapEngine with ChangeNotifier {
               infoWindow: InfoWindow(
                   title: countriesDataModelList[i].country.toString()),
               onTap: () {
-                _index = i.toInt();
-                _mapMarkerInfo = true;
+                _indexTapped = i.toInt();
+                _isMarkerCardShowing = true;
+                print(_isMarkerCardShowing);
                 notifyListeners();
               });
 

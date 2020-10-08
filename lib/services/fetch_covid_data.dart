@@ -2,6 +2,7 @@ import 'package:covidapp/models/countries_data_model.dart';
 import 'package:covidapp/models/global_data_model.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert' as convert;
 
@@ -39,11 +40,10 @@ class FetchCovidData {
         .catchError((onError) => covidGlobalScaffoldKey.currentState
             .showSnackBar(snackBar(
                 "Unable to get data, please check your connection",
-                Color.fromARGB(230, 98, 91, 1))))
+                Color.fromARGB(215, 56, 94, 1))))
         // ignore: missing_return
-        .timeout(Duration(seconds: 8), onTimeout: () {
-          covidGlobalScaffoldKey.currentState.showSnackBar(
-              snackBar("Request timeout", Color.fromARGB(126, 24, 60, 1)));
+        .timeout(Duration(seconds: 10), onTimeout: () {
+          Fluttertoast.showToast(msg: 'Request timeout');
         });
   }
 
@@ -71,17 +71,15 @@ class FetchCovidData {
                 "Unable to get data, please check your connection",
                 Color.fromARGB(230, 98, 91, 1))))
         //ignore: missing_return
-        .timeout(Duration(seconds: 8), onTimeout: () {
-          covidCountriesScaffoldKey.currentState.showSnackBar(
-              snackBar("Request timeout", Color.fromARGB(126, 24, 60, 1)));
+        .timeout(Duration(seconds: 10), onTimeout: () {
+          Fluttertoast.showToast(msg: 'Request timeout');
         });
   }
-
-  // https://corona.lmao.ninja/v2/countries'
 }
 
 /// ****************************************************************************************/
-/// MAP THE LIST DATA INTO THE MODEL ON A BACKGROUND THREAD
+/// isolate:
+/// MAPS THE LIST DATA INTO THE MODEL ON A BACKGROUND THREAD
 /// ***************************************************************************************/
 List<CovidCountriesModel> parseCountriesData(List<dynamic> data) {
   final List<Map<String, dynamic>> covidDataList =
