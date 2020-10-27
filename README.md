@@ -27,3 +27,5 @@ If you intend to clone the source code and play around with it,
 - Replace "@string/key" with your API Key activated with google map
 - The app will not run without that piece.
 
+
+https://meet.google.com/jhj-sxwd-adp
