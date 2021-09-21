@@ -1,7 +1,6 @@
 import 'package:covidapp/models/countries_data_model.dart';
 import 'package:covidapp/services/fetch_covid_data.dart';
 import 'package:covidapp/services/map_service.dart';
-import 'package:covidapp/widgets/covid_country_data_cols.dart';
 import 'package:covidapp/widgets/covid_map_detail_card.dart';
 import 'package:covidapp/widgets/search_bar.dart';
 import 'package:flutter/material.dart';
@@ -17,13 +16,12 @@ class CovidMapView extends StatefulWidget {
 
 class _CovidMapViewState extends State<CovidMapView> {
   NumberFormat f = new NumberFormat();
-  // ignore: unused_field
-  MapEngine _mapEngineProvider;
+  MapEngine mapEngineProvider;
 
   @override
   void initState() {
     super.initState();
-    _mapEngineProvider = Provider.of<MapEngine>(context, listen: false);
+    mapEngineProvider = Provider.of<MapEngine>(context, listen: false);
   }
 
   @override
